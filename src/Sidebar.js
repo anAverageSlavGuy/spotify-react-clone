@@ -4,7 +4,7 @@ import Logo from './images/Spotify_Logo_RGB_White.png';
 
 function Sidebar() {
     return (
-        <div className="flex flex-col flex-[1] h-full bg-[black]">
+        <div className="hidden lg:flex flex-col flex-[1] h-full bg-[black]">
             <div className="pl-[24px] pt-[24px] mb-[32px]">
                 <img src={Logo} className="h-[38px]" />
             </div>

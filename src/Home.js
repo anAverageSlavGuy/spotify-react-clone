@@ -36,31 +36,12 @@ function Home() {
         }
     }
 
-    /* useEffect(() => {
-
-        const changeNavbarOpacity = () => {
-            console.log(window.scrollY);
-            if (window.scrollY <= 60) {
-                setNavOpacity(0);
-            } else if (window.scrollY >= 60 && window.scrollY <= 150) {
-                setNavOpacity(0.5);
-            } else {
-                setNavOpacity(1);
-            }
-        }
-
-        // adding the event when scroll change background
-        window.addEventListener("scroll", changeNavbarOpacity);
-        return () => window.removeEventListener("scroll", changeNavbarOpacity);
-
-    }, []) */
-
     return (
         <div className="flex flex-col flex-[7] h-full w-full overflow-y-auto" onScroll={changeNavbarOpacity}>
 
             <div className="flex flex-col bg-gradient-to-t from-[#121212] to-emerald-900 w-full">
                 <nav className="fixed top-0 h-[64px] w-full bg-emerald-900 py-[16px] px-[32px]" style={{ "--tw-bg-opacity": navOpacity }}>
-                    <div className="flex items-center gap-x-[16px] h-full">
+                    <div className="hidden lg:flex items-center gap-x-[16px] h-full">
                         <div className="rounded-full bg-black p-[5px]">
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#fff" className="bi bi-chevron-left" viewBox="0 0 16 16">
                                 <path fillRule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
@@ -73,14 +54,14 @@ function Home() {
                         </div>
                     </div>
                 </nav>
-                <main className="h-full px-[32px] py-[24px] mt-[64px]">
-                    <div className="text-3xl font-bold text-white mb-[16px]">Buon pomeriggio</div>
-                    <div className="grid grid-cols-3 gap-x-[24px] gap-y-[16px]">
+                <main className="h-full px-[16px] lg:px-[32px] py-[24px] mt-[64px]">
+                    <div className="text-lg lg:text-3xl font-bold text-white mb-[4px] lg:mb-[16px]">Buon pomeriggio</div>
+                    <div className="flex lg:grid lg:grid-cols-3 gap-x-[24px] gap-y-[16px]">
                         {
                             recent.map(item => {
                                 return (
-                                    <div className="flex items-center h-[80px] bg-[hsla(0,0%,100%,.1)] rounded">
-                                        <img src={item.image} className="h-full rounded-tl rounded-bl" />
+                                    <div className="flex items-center flex-col lg:flex-row h-[80px] bg-[hsla(0,0%,100%,.1)] rounded">
+                                        <img src={item.image} className="w-full lg:w-[80px] lg:h-full rounded-tl rounded-bl" />
                                         <span className="px-[16px] text-base font-bold text-white">{item.title}</span>
                                     </div>
                                 )
