@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Card from './Card.js';
+import Title from './Title.js';
 import './Home.css';
 
 function Home() {
@@ -29,9 +30,9 @@ function Home() {
     const changeNavbarOpacity = (event) => {
         if (event.currentTarget.scrollTop <= 60) {
             setNavOpacity(0);
-        } else if (event.currentTarget.scrollTop >= 60 && event.currentTarget.scrollTop <= 150) {
+        } else if (event.currentTarget.scrollTop > 60 && event.currentTarget.scrollTop <= 150) {
             setNavOpacity(0.5);
-        } else {
+        } else if (event.currentTarget.scrollTop > 150){
             setNavOpacity(1);
         }
     }
@@ -42,12 +43,12 @@ function Home() {
             <div className="flex flex-col bg-gradient-to-t from-[#121212] to-emerald-900 w-full">
                 <nav className="fixed top-0 h-[64px] w-full bg-emerald-900 py-[16px] px-[32px]" style={{ "--tw-bg-opacity": navOpacity }}>
                     <div className="hidden lg:flex items-center gap-x-[16px] h-full">
-                        <div className="rounded-full bg-black p-[5px]">
+                        <div className="rounded-full bg-black p-[5px] cursor-pointer" title="Torna indietro">
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#fff" className="bi bi-chevron-left" viewBox="0 0 16 16">
                                 <path fillRule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
                             </svg>
                         </div>
-                        <div className="rounded-full bg-black p-[5px] opacity-50">
+                        <div className="rounded-full bg-black p-[5px] opacity-50 cursor-not-allowed">
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#fff" className="bi bi-chevron-right" viewBox="0 0 16 16">
                                 <path fillRule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
                             </svg>
@@ -60,9 +61,14 @@ function Home() {
                         {
                             recent.map(item => {
                                 return (
-                                    <div className="flex items-center flex-col lg:flex-row h-[80px] bg-[hsla(0,0%,100%,.1)] rounded">
+                                    <div className="group relative flex items-center flex-col lg:flex-row h-[80px] bg-[hsla(0,0%,100%,.1)] rounded-md transition-all duration-300 hover:bg-[hsla(0,0%,100%,.2)] hover:cursor-pointer ">
                                         <img src={item.image} className="w-full lg:w-[80px] lg:h-full rounded-tl rounded-bl" />
                                         <span className="px-[16px] text-base font-bold text-white">{item.title}</span>
+                                        <button className="invisible absolute flex items-center justify-center w-[48px] h-[48px] right-[16px] bg-[#1ed760] opacity-0 rounded-full shadow-lg transition-all duration-300 group-hover:visible group-hover:opacity-100 hover:scale-110 hover:cursor-default">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="black" class="bi bi-play-fill" viewBox="0 0 16 16">
+                                                <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z" />
+                                            </svg>
+                                        </button>
                                     </div>
                                 )
                             })
@@ -74,7 +80,7 @@ function Home() {
             <div className="flex flex-col bg-[#121212] w-full">
 
                 <section className="h-fit px-[32px] py-[24px]">
-                    <div className="text-2xl font-bold text-white mb-[12px]">I più grandi successi</div>
+                    <Title text="I più grandi successi di oggi" size="text-2xl" more={true} />
                     <div className="grid grid-cols-8 gap-x-[24px]">
                         {
                             hits.map((item, index) => {
@@ -87,7 +93,7 @@ function Home() {
                 </section>
 
                 <section className="h-fit px-[32px] py-[24px]">
-                    <div className="text-2xl font-bold text-white mb-[12px]">Creato per te</div>
+                    <Title text="Creato per te" size="text-2xl" more={true} />
                     <div className="grid grid-cols-8 gap-x-[24px]">
                         {
                             hits.map((item, index) => {
@@ -100,7 +106,7 @@ function Home() {
                 </section>
 
                 <section className="h-fit px-[32px] py-[24px]">
-                    <div className="text-2xl font-bold text-white mb-[12px]">Ascoltate di recente</div>
+                    <Title text="Ascoltate di recente" size="text-2xl" more={true} />
                     <div className="grid grid-cols-8 gap-x-[24px]">
                         {
                             hits.map((item, index) => {
