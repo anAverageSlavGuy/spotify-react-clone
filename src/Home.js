@@ -41,7 +41,7 @@ function Home() {
         <div className="flex flex-col flex-[7] h-full w-full overflow-y-auto" onScroll={changeNavbarOpacity}>
 
             <div className="flex flex-col bg-gradient-to-t from-[#121212] to-emerald-900 w-full">
-                <nav className="fixed top-0 h-[64px] w-full bg-emerald-900 py-[16px] px-[32px]" style={{ "--tw-bg-opacity": navOpacity }}>
+                <nav className="fixed top-0 h-[64px] w-full bg-emerald-900 py-[16px] px-[32px] z-10" style={{ "--tw-bg-opacity": navOpacity }}>
                     <div className="hidden lg:flex items-center gap-x-[16px] h-full">
                         <div className="rounded-full bg-black p-[5px] cursor-pointer" title="Torna indietro">
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#fff" className="bi bi-chevron-left" viewBox="0 0 16 16">
