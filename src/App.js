@@ -6,7 +6,7 @@ import './App.css';
 function App() {
   return (
     <>
-      <div className="app-container">
+      <div className="flex h-full lg:h-[calc(100vh-90px)]">
         <Sidebar />
         <Home />
       </div>

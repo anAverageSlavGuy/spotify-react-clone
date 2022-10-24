@@ -5,7 +5,7 @@ function Player() {
   const nowPlaying = { "title": "Cupid's Chokehold / Breakfast in America", "author": "Gym Class Heroes", "image": "https://i.scdn.co/image/ab67616d00004851f335d8387c3658831112f914" };
 
   return (
-    <div className="flex items-center h-[90px] w-full bg-[#181818] px-[16px] gap-x-[16px]">
+    <div className="hidden lg:flex items-center h-[70px] lg:h-[90px] w-full bg-[#181818] px-[16px] gap-x-[16px]">
 
       <div className="flex items-center flex-[3]">
         <img src={nowPlaying.image} className="h-[56px] w-[56px]" />
